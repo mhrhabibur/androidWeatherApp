@@ -47,7 +47,7 @@
                 android:id="@+id/textView_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".45"
+                android:layout_weight="0.45"
                 android:background="#673AB7"
                 android:gravity="center"
                 android:minLines="2"
@@ -62,10 +62,28 @@
                 android:layout_height="0dp"/>
         </LinearLayout>
 
+
+
         <ImageView
-            android:id="@+id/imageView_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/imageView_status"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_cloud"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+
+        <TextView
+            android:id="@+id/textView_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#673AB7"
+            android:gravity="center"
+            android:minLines="2"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="Clear"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/textView_temperature"
@@ -75,24 +93,13 @@
             android:gravity="center"
             android:minLines="2"
             android:paddingTop="3dp"
+            android:layout_marginTop="5dp"
             android:paddingBottom="3dp"
             android:text="Temperature"
             android:textColor="@color/white"
             android:textSize="13sp"/>
 
-        <TextView
-            android:id="@+id/textView_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#673AB7"
-            android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:minLines="2"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:text="Status"
-            android:textColor="@color/white"
-            android:textSize="13sp"/>
+
 
 
 
@@ -107,13 +114,44 @@
         android:layout_weight="1"
         >
 
+        <ImageView
+            android:id="@+id/imageView_timer"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_time"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="1"
-        >
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+
+
+
+
+
 
 
     </LinearLayout>
