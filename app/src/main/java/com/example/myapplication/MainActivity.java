@@ -104,10 +104,7 @@ public class MainActivity extends AppCompatActivity {
        String statusId = cureentWeather.getIcon();
        String url = "https://openweathermap.org/img/wn/"+statusId+"@2x.png";
        Picasso.get().load(url).into(weatherStatus);
-
-
-
-        
+       
 
         temperature.setText("Temperature: " +tempInCel+"* Celsius");
 
