@@ -12,6 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import java.net.URI;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Calendar;
 
 import retrofit2.Call;
@@ -22,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView day, date, temperature, city, feelsLike, humidity, status;
+    TextView day, date, temperature, city, feelsLike, humidity, status, sunrise, sunset;
     ImageView weatherStatus;
 
     @Override
@@ -38,17 +40,20 @@ public class MainActivity extends AppCompatActivity {
         humidity = findViewById(R.id.textView_humidity);
         status = findViewById(R.id.textView_status);
         weatherStatus = findViewById(R.id.imageView_status);
+        sunrise = findViewById(R.id.textView_sunrise);
+        sunset = findViewById(R.id.textView_sunset);
 
 
         Calendar calendar = Calendar.getInstance();
-        int month = calendar.get(Calendar.MONTH);
-        int exactMon = month+1;
-       int dates = calendar.get(Calendar.DAY_OF_MONTH);
-       int dayName = calendar.getFirstDayOfWeek();
-       day.setText("" +dayName);
+        String currentdate  =  DateFormat.getDateInstance().format(calendar.getTime());
+
+        String currentDay  =  DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String[] splitday = currentDay.split(", ");
+        day.setText(""+splitday[0].trim());
 
 
-       date.setText("" +dates+", "+exactMon);
+
+       date.setText("" +currentdate);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.openweathermap.org/data/2.5/")
@@ -113,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
         double hmidity =  weather.getMain().getHumidity();
         humidity.setText("Humidity: " +hmidity);
+
+        Integer sunriseStatus = weather.getSys().getSunrise();
+        sunrise.setText(""+sunriseStatus);
 
     }
 
