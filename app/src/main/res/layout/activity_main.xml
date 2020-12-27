@@ -67,9 +67,21 @@
         <ImageView
             android:id="@+id/imageView_status"
             android:layout_gravity="center"
-            android:background="@drawable/ic_cloud"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/textView_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#673AB7"
+            android:gravity="center"
+            android:minLines="2"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="Status"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
 
 
         <TextView
@@ -77,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#673AB7"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:minLines="2"
             android:paddingTop="3dp"

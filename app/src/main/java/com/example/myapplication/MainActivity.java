@@ -2,10 +2,16 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.net.URI;
+import java.net.URL;
 import java.util.Calendar;
 
 import retrofit2.Call;
@@ -16,7 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView day, date, temperature, city, feelsLike, humidity;
+    TextView day, date, temperature, city, feelsLike, humidity, status;
+    ImageView weatherStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         city = findViewById(R.id.textView_city);
         feelsLike = findViewById(R.id.textView_feelsLike);
         humidity = findViewById(R.id.textView_humidity);
+        status = findViewById(R.id.textView_status);
+        weatherStatus = findViewById(R.id.imageView_status);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -86,13 +95,26 @@ public class MainActivity extends AppCompatActivity {
         double temp = weather.getMain().getTemp();
         double tempInCel = temp-273.15;
 
+        Weather cureentWeather = weather.getWeather().get(0);
+        String currentStatus = cureentWeather.getMain();
+
+        status.setText(currentStatus);
+
+
+       String statusId = cureentWeather.getIcon();
+       String url = "https://openweathermap.org/img/wn/"+statusId+"@2x.png";
+       Picasso.get().load(url).into(weatherStatus);
+
+
+
         
 
         temperature.setText("Temperature: " +tempInCel+"* Celsius");
 
         double feelLike =  weather.getMain().getFeelsLike();
         double feelLikeTemp = feelLike-273.15;
-        feelsLike.setText("Real Feel Like: " +feelLikeTemp+"* Celsius");
+        String feelLiketemperature = String.format("%.2f", feelLikeTemp);
+        feelsLike.setText("Real Feel Like: " +feelLiketemperature+"* Celsius");
 
         double hmidity =  weather.getMain().getHumidity();
         humidity.setText("Humidity: " +hmidity);
