@@ -120,7 +120,12 @@ public class MainActivity extends AppCompatActivity {
         humidity.setText("Humidity: " +hmidity);
 
         Integer sunriseStatus = weather.getSys().getSunrise();
-        sunrise.setText(""+sunriseStatus);
+        String sunriseTime = new java.text.SimpleDateFormat("HH:mm").format(new java.util.Date(sunriseStatus/1000));
+        sunrise.setText(sunriseTime);
+
+        Integer sunsetStatus = weather.getSys().getSunset();
+        String sunsetsTime = new java.text.SimpleDateFormat("HH:mm").format(new java.util.Date(sunsetStatus/1000));
+        sunset.setText(sunsetsTime);
 
     }
 
