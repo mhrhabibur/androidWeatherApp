@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         double feelLike =  weather.getMain().getFeelsLike();
         double feelLikeTemp = feelLike-273.15;
-        feelsLike.setText("Real Feel Like: " +feelLikeTemp+"* Celsius");
+        feelsLike.setText("Feel Like: " +feelLikeTemp+"* Celsius");
 
         double hmidity =  weather.getMain().getHumidity();
         humidity.setText("Humidity: " +hmidity);
